@@ -172,6 +172,7 @@ namespace DAL
             this.Close();
 
             new AccountsFormLoader().LoadForm();
+            
         }
     }
 }

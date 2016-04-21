@@ -34,23 +34,28 @@ namespace DBSBank
             if (minusAmount > limit)
             {
                 MessageBox.Show("Transaction not allowed, Overdraft exceeded");
+                this.DialogResult = DialogResult.None;
+                txtMinusAmount.Clear();
+                txtMinusAmount.Focus();
             }
             else
             {
                 txtBal.Text = (currentBalance - minusAmount).ToString();
+
+                //record transaction 
+                AddData ad = new AddData();//to make transaction
+
+                //gather withdrawal variables
+                string type = "Withdrawal";
+                decimal amount = decimal.Parse(txtMinusAmount.Text);
+                int accNum = int.Parse(txtAccountNumber.Text);
+                decimal balance = decimal.Parse(txtBal.Text);
+                DateTime date = DateTime.Now;
+
+                ad.AddWithdrawTransaction(type, amount, accNum, balance, date);
+                MessageBox.Show("Success, Make Another Withdrawal or Update Database");
             }
-            //record transaction 
-            AddData ad = new AddData();//to make transaction
-
-            //gather withdrawal variables
-            string type = "Withdrawal";
-            decimal amount = decimal.Parse(txtMinusAmount.Text);
-            int accNum = int.Parse(txtAccountNumber.Text);
-            decimal balance = decimal.Parse(txtBal.Text);
-            DateTime date = DateTime.Now;
-
-            ad.AddWithdrawTransaction(type, amount, accNum, balance, date);
-            MessageBox.Show("Success, Make Another Withdrawal or Update Database");
+            
         }
         private void btnUpdateAcc_Click(object sender, EventArgs e)
         {
