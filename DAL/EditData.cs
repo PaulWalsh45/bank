@@ -92,29 +92,29 @@ namespace DAL
             CloseCon();
         }
 
-        public void UpdateBalance(decimal bal, int id)
+        public void UpdateBalance(decimal balance, int accountId)
         {
             SqlCommand cmd = new SqlCommand("UPDATE Accounts SET InitialBalance=@bal WHERE AccountId = @id", OpenCon());
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@bal", bal);
+            cmd.Parameters.AddWithValue("@id", accountId);
+            cmd.Parameters.AddWithValue("@bal", balance);
             cmd.ExecuteNonQuery();
             CloseCon();
         }
 
-        public void UpdateAccBalOne(int accNum, decimal bal)
+        public void UpdateDebitingAccountBalance(int accountNumber, decimal balance)
         {
             SqlCommand cmd = new SqlCommand("UPDATE Accounts SET InitialBalance=@bal WHERE AccountNumber = @num", OpenCon());
-            cmd.Parameters.AddWithValue("@num", accNum);
-            cmd.Parameters.AddWithValue("@bal", bal);
+            cmd.Parameters.AddWithValue("@num", accountNumber.ToString());
+            cmd.Parameters.AddWithValue("@bal", balance);
             cmd.ExecuteNonQuery();
             CloseCon();
         }
 
-        public void UpdateAccBalTwo(int accNum, decimal bal)
+        public void UpdateCreditingAccountBalance(int accountNumber, decimal balance)
         {
             SqlCommand cmd = new SqlCommand("UPDATE Accounts SET InitialBalance=@bal WHERE AccountNumber = @num", OpenCon());
-            cmd.Parameters.AddWithValue("@num", accNum);
-            cmd.Parameters.AddWithValue("@bal", bal);
+            cmd.Parameters.AddWithValue("@num", accountNumber.ToString());
+            cmd.Parameters.AddWithValue("@bal", balance);
             cmd.ExecuteNonQuery();
             CloseCon();
         }

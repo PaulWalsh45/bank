@@ -154,9 +154,9 @@ namespace DAL
         private void btnUpdateAccs_Click(object sender, EventArgs e)
         {            
             //account 1 debiting account
-            int acNum = int.Parse(txtAccNum.Text);
-            decimal balOne = decimal.Parse(txtBal.Text);
-            ed.UpdateAccBalOne(acNum,balOne);
+            int accountNumber = int.Parse(txtAccNum.Text);
+            decimal debitingAccountBalance = decimal.Parse(txtBal.Text);
+            ed.UpdateDebitingAccountBalance(accountNumber,debitingAccountBalance);
             
 
             //account crediting account Applicable only If Internal DBS Account
@@ -164,8 +164,8 @@ namespace DAL
                 {
                     int accNumber = int.Parse(cbxAccNumInternal.SelectedValue.ToString());
 
-                    decimal balTwo = decimal.Parse(txtCreditedBal.Text);
-                    ed.UpdateAccBalTwo(accNumber, balTwo);
+                    decimal CreditingAccountBalance = decimal.Parse(txtCreditedBal.Text);
+                    ed.UpdateCreditingAccountBalance(accNumber, CreditingAccountBalance);
                 }
             
             MessageBox.Show("Database Updated Successfully");
