@@ -13,27 +13,27 @@ namespace DAL
     public partial class Transfer : Form
     {
         //list for retrieved account numbers
-        List<string> list = new List<string>();
+        List<string> listOfAccountNumbers = new List<string>();
        
         //instantiate classes to be used throughout this class
         EditData ed = new EditData();
         AddData ad = new AddData();
 
         //declare binding source for combobox internal account numbers
-        BindingSource bs = new BindingSource();
+        BindingSource bindingSource = new BindingSource();
 
-        TransferFunds tf = new TransferFunds();
+        TransferFunds transferFunds = new TransferFunds();
 
-        public Transfer(int id)
+        public Transfer(int accountId)
         {
             InitializeComponent();
 
-            txtId.Text = id.ToString();
-            tf = tf.GetAccountDetails(id);
+            txtId.Text = accountId.ToString();
+            transferFunds = transferFunds.GetAccountDetails(accountId);
            
-            txtAccNum.Text = tf.AccountNumber.ToString();
-            txtBal.Text = tf.Balance.ToString();
-            txtOverdraft.Text = tf.Overdraft.ToString();           
+            txtAccNum.Text = transferFunds.AccountNumber.ToString();
+            txtBal.Text = transferFunds.Balance.ToString();
+            txtOverdraft.Text = transferFunds.Overdraft.ToString();           
         }
 
         private void cbxBank_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,13 +58,13 @@ namespace DAL
             if (cbxBank.SelectedIndex == 0)
             {
                 //populate combobox with list of account numbers
-                list = tf.GetAccountNumbers();
-                bs.DataSource = list;
-                cbxAccNumInternal.DataSource = bs;
+                listOfAccountNumbers = transferFunds.GetAccountNumbers();
+                bindingSource.DataSource = listOfAccountNumbers;
+                cbxAccNumInternal.DataSource = bindingSource;
             }
             else
             {
-                bs.DataSource = null;
+                bindingSource.DataSource = null;
                 
                 //cbxAccNumInternal.Text = "Not Applicable";
                 txtCreditedBal.Text= "N/A Ext.Account";
@@ -74,9 +74,9 @@ namespace DAL
         {
             //internal Account Variables
             decimal balance = decimal.Parse(txtBal.Text);
-            decimal oDraft = decimal.Parse(txtOverdraft.Text);
-            decimal limit = balance + oDraft;
-            decimal amount = decimal.Parse(txtTransAmount.Text);         
+            decimal overdraft = decimal.Parse(txtOverdraft.Text);
+            decimal transferAmountMaxPermitted = balance + overdraft;
+            decimal transferAmount = decimal.Parse(txtTransAmount.Text);         
             
             //check for duplicate account transfer
             if (txtAccNum.Text == cbxAccNumInternal.Text)
@@ -86,19 +86,19 @@ namespace DAL
             }
             else
             {
-                if (amount <= limit)
+                if (transferAmount <= transferAmountMaxPermitted)
                 {
 
-                    balance = balance - amount;
+                    balance = balance - transferAmount;
                     txtBal.Text = balance.ToString();
 
                     if (txtCreditedBal.Text != "N/A Ext.Account")
                     {
 
                         //update DBS internal account transfer
-                        decimal oldBal = decimal.Parse(txtCreditedBal.Text);
-                        oldBal = oldBal + amount;
-                        txtCreditedBal.Text = oldBal.ToString();
+                        decimal balanceBeforeTransfer = decimal.Parse(txtCreditedBal.Text);
+                        decimal balanceAfterTransfer = balanceBeforeTransfer + transferAmount;
+                        txtCreditedBal.Text = balanceAfterTransfer.ToString();
                     }
                 }
                 else
@@ -121,14 +121,14 @@ namespace DAL
                 int destAccNum = int.Parse(cbxAccNumInternal.Text);
 
                 //execute transfer Query
-                ad.AddTransferTransaction(type, amount, accNum, balance, date, destSC, destAccNum);
+                ad.AddTransferTransaction(type, transferAmount, accNum, balance, date, destSC, destAccNum);
 
                 //execute deposit Query for DBS Accounts Only
                 if (cbxBank.SelectedIndex == 0)
                 {
                     string typ = "Deposit";
                     int acNum = int.Parse(cbxAccNumInternal.Text);
-                    ad.AddDepTransaction(typ, amount, acNum, balance, date);
+                    ad.AddDepTransaction(typ, transferAmount, acNum, balance, date);
 
                 }
                 MessageBox.Show("Success,Update Database prior to further Transfers");
@@ -138,7 +138,7 @@ namespace DAL
         {
             decimal bal;
             TransferFunds tranF = new TransferFunds();
-            tranF = tranF.GetCreditingAccBal(accNum);
+            tranF = tranF.GetCreditingAccountBalance(accNum);
             bal = tranF.Balance;
             return bal;
         }

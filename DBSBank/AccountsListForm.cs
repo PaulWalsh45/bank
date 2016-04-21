@@ -137,8 +137,8 @@ namespace DBSBank
         {
             if (dgv.SelectedRows.Count > 0)
             {
-                int id = GetSelectedDatagridRecordAccountId();
-                Transfer transferForm = new Transfer(id);
+                int accountId = GetSelectedDatagridRecordAccountId();
+                Transfer transferForm = new Transfer(accountId);
                 transferForm.ShowDialog();
                 this.Close();
             }

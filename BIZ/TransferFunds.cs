@@ -18,11 +18,11 @@ namespace BIZ
 
         }
         //method to get account dettail to transfer fund
-        public TransferFunds GetAccountDetails(int id)
+        public TransferFunds GetAccountDetails(int accountId)
         {
             TransferFunds trans = new TransferFunds();
             SqlCommand cmd = new SqlCommand("SELECT * from Accounts WHERE AccountId = @id", OpenCon());
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", accountId);
             SqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
@@ -40,36 +40,37 @@ namespace BIZ
         //get account numbers list
         public List<string> GetAccountNumbers()
         {
-            List<string> list = new List<string>();
+            List<string> listOfAccountNumbers = new List<string>();
             
             SqlCommand cmd = new SqlCommand("SELECT * from Accounts", OpenCon());
-            SqlDataReader dr = cmd.ExecuteReader();
+            SqlDataReader dataReader = cmd.ExecuteReader();
 
 
-            while (dr.Read())
+            while (dataReader.Read())
             {
-                list.Add(Convert.ToString(dr["AccountNumber"]));
+                listOfAccountNumbers.Add(Convert.ToString(dataReader["AccountNumber"]));
+               
                 
             }
             CloseCon();
-            return list;
+            return listOfAccountNumbers;
         }
         //method to transer fund
-        public TransferFunds GetCreditingAccBal(int accNo)
+        public TransferFunds GetCreditingAccountBalance(int accountNumber)
         {
-            TransferFunds trans = new TransferFunds();
+            TransferFunds transferFunds = new TransferFunds();
             SqlCommand cmd = new SqlCommand("SELECT * from Accounts WHERE AccountNumber = @an", OpenCon());
-            cmd.Parameters.AddWithValue("@an", accNo);
+            cmd.Parameters.AddWithValue("@an", accountNumber.ToString());
             SqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
             {
 
-                trans.Balance = decimal.Parse(dr["InitialBalance"].ToString());
+                transferFunds.Balance = decimal.Parse(dr["InitialBalance"].ToString());
                
             }
             CloseCon();
-            return trans;
+            return transferFunds;
         }
 
     }
