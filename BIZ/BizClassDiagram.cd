@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BIZ.Account">
+    <Position X="0.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAMAAACAAAAAIAAAEQAQABEgAgAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.AddNewAccount">
+    <Position X="2.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAQAMAAACAAAAAIAAAEQQQABEgAgAAAAAAAIAACAAA=</HashCode>
+      <FileName>AddNewAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.CurrentAccount">
+    <Position X="0.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CurrentAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.DepositFunds">
+    <Position X="4.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAEAAoAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>DepositFunds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.EditExistingAccount">
+    <Position X="6.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAQMAAACAAAAAIAAAEQQQABEgAgAAAAABAICAAAAA=</HashCode>
+      <FileName>EditExistingAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.Login">
+    <Position X="8.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.Program">
+    <Position X="2.75" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.Transactions">
+    <Position X="6.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAgAAAEBAAIAAgAAAAA=</HashCode>
+      <FileName>Transactions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.TransferFunds">
+    <Position X="2.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAgAQAAAAAgAAAAAAAAUAAAAAAA=</HashCode>
+      <FileName>TransferFunds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.WithdrawFunds">
+    <Position X="4.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAgAAAAAAAgAAAAAAAAEACAAAAA=</HashCode>
+      <FileName>WithdrawFunds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.XmlSerialAcc">
+    <Position X="8.75" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAQMAAACAAAAAIAAAEQQQABEgAgAAAAABAICAAABA=</HashCode>
+      <FileName>XmlSerialAcc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.Properties.Resources">
+    <Position X="4.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.Properties.Settings">
+    <Position X="0.75" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

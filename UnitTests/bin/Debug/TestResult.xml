@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\PXWalsh\Downloads\PaulWalsh_AdvProgAssignment\PaulWalsh_AdvProgAssignment\DBSBank\UnitTests\bin\Debug\UnitTests.dll" total="12" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2016-04-20" time="14:26:31">
+  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.2\bin" machine-name="EUNB90ZNL72" user="PXWalsh" user-domain="IDEV" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Users\PXWalsh\Downloads\PaulWalsh_AdvProgAssignment\PaulWalsh_AdvProgAssignment\DBSBank\UnitTests\bin\Debug\UnitTests.dll" executed="True" result="Success" success="True" time="0.168" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="0.150" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="AccountNumberTests" executed="True" result="Success" success="True" time="0.123" asserts="0">
+            <results>
+              <test-suite type="ParameterizedTest" name="InstantiateInvalidAccountNumber" executed="True" result="Success" success="True" time="0.095" asserts="0">
+                <results>
+                  <test-case name="UnitTests.AccountNumberTests.InstantiateInvalidAccountNumber(&quot;1234567&quot;)" executed="True" result="Success" success="True" time="0.085" asserts="0" />
+                  <test-case name="UnitTests.AccountNumberTests.InstantiateInvalidAccountNumber(&quot;123456789&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+              <test-case name="UnitTests.AccountNumberTests.InstantiateValidAccountNumberReturnObjectCorrectly" executed="True" result="Success" success="True" time="0.015" asserts="0" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="EmailTests" executed="True" result="Success" success="True" time="0.011" asserts="0">
+            <results>
+              <test-suite type="ParameterizedTest" name="InstantiateInvalidEmailThrowsException" executed="True" result="Success" success="True" time="0.008" asserts="0">
+                <results>
+                  <test-case name="UnitTests.EmailTests.InstantiateInvalidEmailThrowsException(&quot;@.com&quot;)" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="UnitTests.EmailTests.InstantiateInvalidEmailThrowsException(&quot;@&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="UnitTests.EmailTests.InstantiateInvalidEmailThrowsException(&quot;i.com&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="UnitTests.EmailTests.InstantiateInvalidEmailThrowsException(&quot;invalidaddress.com&quot;)" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                </results>
+              </test-suite>
+              <test-case name="UnitTests.EmailTests.InstantiateValidEmailReturnsObjectCorrectly" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="PhoneNumberTests" executed="True" result="Success" success="True" time="0.010" asserts="0">
+            <results>
+              <test-case name="UnitTests.PhoneNumberTests.InstantiateValidPhoneNumberReturnObjectCorrectly" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+              <test-suite type="ParameterizedTest" name="IstantiateInvalidPhoneNumberLengthThrowsException" executed="True" result="Success" success="True" time="0.006" asserts="0">
+                <results>
+                  <test-case name="UnitTests.PhoneNumberTests.IstantiateInvalidPhoneNumberLengthThrowsException(&quot;123-123456&quot;)" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="UnitTests.PhoneNumberTests.IstantiateInvalidPhoneNumberLengthThrowsException(&quot;1231234567&quot;)" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="UnitTests.PhoneNumberTests.IstantiateInvalidPhoneNumberLengthThrowsException(&quot;123-12345678&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
