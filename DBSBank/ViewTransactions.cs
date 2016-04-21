@@ -7,7 +7,7 @@ namespace DBSBank
 {
     public partial class ViewTransactions : Form
     {
-        public ViewTransactions(int id)
+        public ViewTransactions(string accountNumber)
         {
             InitializeComponent();
 
@@ -15,9 +15,9 @@ namespace DBSBank
             DataTable dt = new DataTable();
             DAO connection = new DAO();
             string sqlStatement = "SELECT * from Transactions WHERE AccountNumber = @id";
-            SqlCommand sqlCmd = new SqlCommand(sqlStatement, connection.OpenCon());
-            sqlCmd.Parameters.AddWithValue("@id", id);
-            SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+            SqlCommand cmd = new SqlCommand(sqlStatement, connection.OpenCon());
+            cmd.Parameters.AddWithValue("@id", accountNumber);
+            SqlDataAdapter sqlDa = new SqlDataAdapter(cmd);
             sqlDa.Fill(dt);
             if (dt.Rows.Count > 0)
             {

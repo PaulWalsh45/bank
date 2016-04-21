@@ -13,7 +13,7 @@ namespace DBSBank
         public AccountsListForm()
         {
             InitializeComponent();
-           
+          
             DataGridViewCellStyle style =
              dgv.ColumnHeadersDefaultCellStyle;
             
@@ -75,10 +75,16 @@ namespace DBSBank
 
         public void RefreshDataGrid()
         {
+            //this.dgv.ResetBindings();//added to try and correct info in grid still using old db info
             CurrentAccount currentAccount = new CurrentAccount();
+           // BindingSource bs = new BindingSource();
+            //bs.DataSource = currentAccount.GetAccounts();
             dgv.DataSource = null;
             dgv.DataSource = currentAccount.GetAccounts();
-            this.dgv.Refresh();//added to try and correct info in grid still using old db info
+            //dgv.DataSource = bs;
+
+
+            
 
         }
 
@@ -142,12 +148,12 @@ namespace DBSBank
             }
               
         }
-        //button click event for transaction
+        //button click event for viewing transactions by Account Number
         private void viewTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count > 0)
             {
-                int accountNumber = GetSelectedDatagridRecordAccountNumber();
+                string accountNumber = GetSelectedDatagridRecordAccountNumber();
                 ViewTransactions viewTransactionsForm = new ViewTransactions(accountNumber);
                 viewTransactionsForm.ShowDialog();
                 
@@ -170,14 +176,15 @@ namespace DBSBank
             {
                 rowindex = dgv.SelectedRows[0].Index;
                 id = (int)dgv.Rows[rowindex].Cells[columnindex].Value;
+                //id = dgv.Rows[rowindex].Cells[columnindex].Value;
 
             }
             return id;
         }
         //method to get account number for a account
-        public int GetSelectedDatagridRecordAccountNumber()
+        public string GetSelectedDatagridRecordAccountNumber()
         {
-            int accNum = 0;
+            string accountNumber ="";
 
             int columnindex = 10;
             int rowindex = 0;
@@ -185,10 +192,11 @@ namespace DBSBank
             if (dgv.SelectedRows.Count > 0)
             {
                 rowindex = dgv.SelectedRows[0].Index;
-                accNum = (int)dgv.Rows[rowindex].Cells[columnindex].Value;
+                accountNumber = dgv.Rows[rowindex].Cells[columnindex].Value.ToString();
+                
 
             }
-            return accNum;
+            return accountNumber;
         }
         //button click event for xml serailise
         private void xmlSerialiseToolStripMenuItem_Click(object sender, EventArgs e)

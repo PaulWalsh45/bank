@@ -9,6 +9,11 @@ namespace DAL
     {
         public string AccountNum { get; set; }
 
+        public AccountNumber()
+        {
+
+        }
+
         public AccountNumber(string accountNumber)
         {
             if (accountNumber.Length != 8) throw new ArgumentException("Account number must contain 8 digits");

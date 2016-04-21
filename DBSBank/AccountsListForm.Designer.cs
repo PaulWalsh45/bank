@@ -46,6 +46,12 @@
             this.xmlSerialiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.accountsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bankDataSet1 = new DBSBank.BankDataSet1();
+            this.bankDataSet = new DBSBank.BankDataSet();
+            this.accountsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.accountsTableAdapter = new DBSBank.BankDataSetTableAdapters.AccountsTableAdapter();
+            this.accountsTableAdapter1 = new DBSBank.BankDataSet1TableAdapters.AccountsTableAdapter();
             this.accountIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,17 +60,12 @@
             this.address1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.County = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sortCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.initialBalanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.overdraftDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bankDataSet1 = new DBSBank.BankDataSet1();
-            this.bankDataSet = new DBSBank.BankDataSet();
-            this.accountsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.accountsTableAdapter = new DBSBank.BankDataSetTableAdapters.AccountsTableAdapter();
-            this.accountsTableAdapter1 = new DBSBank.BankDataSet1TableAdapters.AccountsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -217,23 +218,52 @@
             this.address1DataGridViewTextBoxColumn,
             this.address2DataGridViewTextBoxColumn,
             this.cityDataGridViewTextBoxColumn,
+            this.County,
             this.accountTypeDataGridViewTextBoxColumn,
             this.accountNumberDataGridViewTextBoxColumn,
             this.sortCodeDataGridViewTextBoxColumn,
             this.initialBalanceDataGridViewTextBoxColumn,
             this.overdraftDataGridViewTextBoxColumn});
             this.dgv.DataSource = this.accountsBindingSource1;
-            this.dgv.Location = new System.Drawing.Point(12, 163);
+            this.dgv.Location = new System.Drawing.Point(0, 148);
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(1252, 467);
             this.dgv.TabIndex = 4;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgv.BindingContextChanged += new System.EventHandler(this.dgv_BindingContextChanged);
             // 
+            // accountsBindingSource1
+            // 
+            this.accountsBindingSource1.DataMember = "Accounts";
+            this.accountsBindingSource1.DataSource = this.bankDataSet1;
+            // 
+            // bankDataSet1
+            // 
+            this.bankDataSet1.DataSetName = "BankDataSet1";
+            this.bankDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bankDataSet
+            // 
+            this.bankDataSet.DataSetName = "BankDataSet";
+            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // accountsBindingSource
+            // 
+            this.accountsBindingSource.DataMember = "Accounts";
+            this.accountsBindingSource.DataSource = this.bankDataSet;
+            // 
+            // accountsTableAdapter
+            // 
+            this.accountsTableAdapter.ClearBeforeFill = true;
+            // 
+            // accountsTableAdapter1
+            // 
+            this.accountsTableAdapter1.ClearBeforeFill = true;
+            // 
             // accountIdDataGridViewTextBoxColumn
             // 
             this.accountIdDataGridViewTextBoxColumn.DataPropertyName = "AccountId";
-            this.accountIdDataGridViewTextBoxColumn.HeaderText = "AccountId";
+            this.accountIdDataGridViewTextBoxColumn.HeaderText = "Id";
             this.accountIdDataGridViewTextBoxColumn.Name = "accountIdDataGridViewTextBoxColumn";
             this.accountIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -279,6 +309,12 @@
             this.cityDataGridViewTextBoxColumn.HeaderText = "City";
             this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
             // 
+            // County
+            // 
+            this.County.DataPropertyName = "County";
+            this.County.HeaderText = "Country";
+            this.County.Name = "County";
+            // 
             // accountTypeDataGridViewTextBoxColumn
             // 
             this.accountTypeDataGridViewTextBoxColumn.DataPropertyName = "AccountType";
@@ -308,34 +344,6 @@
             this.overdraftDataGridViewTextBoxColumn.DataPropertyName = "Overdraft";
             this.overdraftDataGridViewTextBoxColumn.HeaderText = "Overdraft";
             this.overdraftDataGridViewTextBoxColumn.Name = "overdraftDataGridViewTextBoxColumn";
-            // 
-            // accountsBindingSource1
-            // 
-            this.accountsBindingSource1.DataMember = "Accounts";
-            this.accountsBindingSource1.DataSource = this.bankDataSet1;
-            // 
-            // bankDataSet1
-            // 
-            this.bankDataSet1.DataSetName = "BankDataSet1";
-            this.bankDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bankDataSet
-            // 
-            this.bankDataSet.DataSetName = "BankDataSet";
-            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // accountsBindingSource
-            // 
-            this.accountsBindingSource.DataMember = "Accounts";
-            this.accountsBindingSource.DataSource = this.bankDataSet;
-            // 
-            // accountsTableAdapter
-            // 
-            this.accountsTableAdapter.ClearBeforeFill = true;
-            // 
-            // accountsTableAdapter1
-            // 
-            this.accountsTableAdapter1.ClearBeforeFill = true;
             // 
             // AccountsListForm
             // 
@@ -390,6 +398,8 @@
         private BankDataSet1 bankDataSet1;
         private System.Windows.Forms.BindingSource accountsBindingSource1;
         private BankDataSet1TableAdapters.AccountsTableAdapter accountsTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem xmlSerialiseToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
@@ -398,12 +408,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn address1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn address2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn County;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sortCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn initialBalanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn overdraftDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem xmlSerialiseToolStripMenuItem;
     }
 }
