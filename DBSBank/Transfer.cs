@@ -144,11 +144,15 @@ namespace DAL
         }
         private void cbxAccNumInternal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (cbxBank.SelectedIndex == 0)
+            {
                 //get current balance of the DBS account
                 int accNumber = int.Parse(cbxAccNumInternal.SelectedValue.ToString());
                 decimal currentBal = GetBalance(accNumber);
                 txtCreditedBal.Text = currentBal.ToString();
+                
+            }
+                
         }
 
         private void btnUpdateAccs_Click(object sender, EventArgs e)
