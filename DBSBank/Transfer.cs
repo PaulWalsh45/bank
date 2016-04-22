@@ -115,11 +115,21 @@ namespace DAL
                     int accNum = int.Parse(txtAccNum.Text);
                     //balance already defined above
                     DateTime date = DateTime.Now;
-                    int destSC = int.Parse(txtSortCode.Text);
-                    int destAccNum = int.Parse(cbxAccNumInternal.Text);
+                    int destinationSortcode = int.Parse(txtSortCode.Text);
+                    string destinationExternalAccountNumber = cbxAccNumInternal.Text;
 
-                    //execute transfer Query
-                    ad.AddTransferTransaction(type, transferAmount, accNum, balance, date, destSC, destAccNum);
+                    //check that an external account number has been added before attempting to execute transfer Query
+                    if (destinationExternalAccountNumber != "")
+                    {
+                        ad.AddTransferTransaction(type, transferAmount, accNum, balance, date, destinationSortcode, destinationExternalAccountNumber);
+                        MessageBox.Show("Success,Update Database prior to further Transfers");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please Enter an Account Number");
+                        cbxAccNumInternal.Focus();
+
+                    }
 
                     //execute deposit Query for DBS Accounts Only
                     if (cbxBank.SelectedIndex == 0)
@@ -129,7 +139,7 @@ namespace DAL
                         ad.AddDepTransaction(typ, transferAmount, acNum, balance, date);
 
                     }
-                    MessageBox.Show("Success,Update Database prior to further Transfers");
+                   
                 }
                 else
                 {

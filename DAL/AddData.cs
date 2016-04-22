@@ -151,7 +151,7 @@ namespace DAL
 
         }
 
-        public void AddTransferTransaction(string type, decimal amount, int accNum, decimal balance, DateTime date,int scode,int acNum)
+        public void AddTransferTransaction(string type, decimal amount, int accNum, decimal balance, DateTime date,int scode,string acNum)
         {
             SqlCommand cmd = new SqlCommand("INSERT INTO Transactions(TransactionType,TransactionAmount,AccountNumber,Balance,Date,DestinationSortCode,DestinationAccNumber) VALUES (@tt,@ta,@an,@bal,@date,@dsc,@dac)", OpenCon());
             cmd.Parameters.AddWithValue("@tt", type);
