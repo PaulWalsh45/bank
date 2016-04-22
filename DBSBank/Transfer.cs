@@ -57,16 +57,22 @@ namespace DAL
             // retrieve account numbers for combo box for DBS Accounts
             if (cbxBank.SelectedIndex == 0)
             {
+                
                 //populate combobox with list of account numbers
                 listOfAccountNumbers = transferFunds.GetAccountNumbers();
                 bindingSource.DataSource = listOfAccountNumbers;
                 cbxAccNumInternal.DataSource = bindingSource;
+
+                if (cbxAccNumInternal.Text!=null)
+                {
+                    RetrieveAccountBalanceForInternalAccounts();
+                }
             }
             else
             {
+               
                 bindingSource.DataSource = null;
-                
-                //cbxAccNumInternal.Text = "Not Applicable";
+                //cbxAccNumInternal.Text = "SELECT";
                 txtCreditedBal.Text= "N/A Ext.Account";
             }
         }
@@ -142,17 +148,21 @@ namespace DAL
             bal = tranF.Balance;
             return bal;
         }
+
         private void cbxAccNumInternal_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxBank.SelectedIndex == 0)
             {
-                //get current balance of the DBS account
-                int accNumber = int.Parse(cbxAccNumInternal.SelectedValue.ToString());
-                decimal currentBal = GetBalance(accNumber);
-                txtCreditedBal.Text = currentBal.ToString();
-                
+              RetrieveAccountBalanceForInternalAccounts();
             }
                 
+        }
+
+        private void RetrieveAccountBalanceForInternalAccounts()
+        {
+            int accNumber = int.Parse(cbxAccNumInternal.SelectedValue.ToString());
+            decimal currentBal = GetBalance(accNumber);
+            txtCreditedBal.Text = currentBal.ToString();
         }
 
         private void btnUpdateAccs_Click(object sender, EventArgs e)
