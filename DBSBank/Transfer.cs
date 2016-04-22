@@ -106,38 +106,42 @@ namespace DAL
                         decimal balanceAfterTransfer = balanceBeforeTransfer + transferAmount;
                         txtCreditedBal.Text = balanceAfterTransfer.ToString();
                     }
+
+                    //Record Transactions Two Required, Transfer and deposit for DBS Accounts 
+
+                    //gather transfer variables
+                    string type = "Transfer";
+                    //amount already defined above
+                    int accNum = int.Parse(txtAccNum.Text);
+                    //balance already defined above
+                    DateTime date = DateTime.Now;
+                    int destSC = int.Parse(txtSortCode.Text);
+                    int destAccNum = int.Parse(cbxAccNumInternal.Text);
+
+                    //execute transfer Query
+                    ad.AddTransferTransaction(type, transferAmount, accNum, balance, date, destSC, destAccNum);
+
+                    //execute deposit Query for DBS Accounts Only
+                    if (cbxBank.SelectedIndex == 0)
+                    {
+                        string typ = "Deposit";
+                        int acNum = int.Parse(cbxAccNumInternal.Text);
+                        ad.AddDepTransaction(typ, transferAmount, acNum, balance, date);
+
+                    }
+                    MessageBox.Show("Success,Update Database prior to further Transfers");
                 }
                 else
                 {
                     MessageBox.Show("Amount Exceeds Limit");
+                    //select and highlight the amount that exceeds the limit to allow re-entry by the user
+                    txtTransAmount.Focus();
+                    txtTransAmount.SelectionStart = 0;
+                    txtTransAmount.SelectionLength = txtTransAmount.Text.Length;
                 }
 
 
-
-
-                //Record Transactions Two Required, Transfer and deposit for DBS Accounts 
-
-                //gather transfer variables
-                string type = "Transfer";
-                //amount already defined above
-                int accNum = int.Parse(txtAccNum.Text);
-                //balance already defined above
-                DateTime date = DateTime.Now;
-                int destSC = int.Parse(txtSortCode.Text);
-                int destAccNum = int.Parse(cbxAccNumInternal.Text);
-
-                //execute transfer Query
-                ad.AddTransferTransaction(type, transferAmount, accNum, balance, date, destSC, destAccNum);
-
-                //execute deposit Query for DBS Accounts Only
-                if (cbxBank.SelectedIndex == 0)
-                {
-                    string typ = "Deposit";
-                    int acNum = int.Parse(cbxAccNumInternal.Text);
-                    ad.AddDepTransaction(typ, transferAmount, acNum, balance, date);
-
-                }
-                MessageBox.Show("Success,Update Database prior to further Transfers");
+                
             }
         }
         public decimal GetBalance(int accNum)
