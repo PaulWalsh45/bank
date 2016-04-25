@@ -12,16 +12,16 @@ namespace DBSBank
             InitializeComponent();
 
             //Withdrawal wd = new Withdrawal(id);
-            WithdrawFunds wf = new WithdrawFunds();
+            WithdrawFunds withdrawFunds = new WithdrawFunds();
 
             txtId.Text = id.ToString();//
             //EditExistingAccount exa = new EditExistingAccount();
 
-            wf = wf.GetAccountDetails(id);
+            withdrawFunds = withdrawFunds.GetAccountDetails(id);
 
-            txtAccountNumber.Text = wf.AccountNumber.ToString();
-            txtBal.Text = wf.Balance.ToString();
-            txtOverdraft.Text = wf.Overdraft.ToString();
+            txtAccountNumber.Text = withdrawFunds.AccountNumber.ToString();
+            txtBal.Text = withdrawFunds.Balance.ToString();
+            txtOverdraft.Text = withdrawFunds.Overdraft.ToString();
         }
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
@@ -65,7 +65,7 @@ namespace DBSBank
             decimal updatedBalance = decimal.Parse(txtBal.Text);
 
             ed.UpdateBalance(updatedBalance, id);
-            MessageBox.Show("Accounted Withdrawal Successful");
+            MessageBox.Show("Account Withdrawal Successful");
             this.Close();
 
             var form = new AccountsListForm();

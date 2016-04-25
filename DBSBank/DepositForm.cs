@@ -61,7 +61,7 @@ namespace DBSBank
             decimal updatedBalance = decimal.Parse(txtBal.Text);
 
             ed.UpdateBalance(updatedBalance,id);
-            MessageBox.Show("Accounted debit Successful");
+            MessageBox.Show("Account debit Successful");
             this.Close();
 
             var form = new AccountsListForm();

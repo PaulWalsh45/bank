@@ -49,14 +49,14 @@ namespace DAL
         public string AddressLine1 { get;  set; }
         public string AddressLine2 { get;  set; }
         public string City { get;  set; }
-        public string Country { get;  set; }
+        public string County { get;  set; }
 
         public EditAccountDetails()
         {
 
         }
 
-        public EditAccountDetails(AccountId id, Email email, Phone phone, string addressLine1, string addressLine2, string city, string country)
+        public EditAccountDetails(AccountId id, Email email, Phone phone, string addressLine1, string addressLine2, string city, string county)
         {
             Id = id;
             Email = email;
@@ -64,7 +64,7 @@ namespace DAL
             AddressLine1 = addressLine1;
             AddressLine2 = addressLine2;
             City = city;
-            Country = country;
+            County = county;
         }
     }
 
@@ -80,14 +80,14 @@ namespace DAL
 
         public void UpdateAccount(EditAccountDetails details)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Accounts SET Email=@em, Phone=@phone, Address1=@ad1, Address2=@ad2, City=@cy,Country=@ctry WHERE AccountId = @id", OpenCon());
+            SqlCommand cmd = new SqlCommand("UPDATE Accounts SET Email=@em, Phone=@phone, Address1=@ad1, Address2=@ad2, City=@cy,County=@cty WHERE AccountId = @id", OpenCon());
             cmd.Parameters.AddWithValue("@id", details.Id.Id);
             cmd.Parameters.AddWithValue("@em", details.Email.EmailAddress);
             cmd.Parameters.AddWithValue("@phone", details.Phone.PhoneNumber);
             cmd.Parameters.AddWithValue("@ad1", details.AddressLine1);
             cmd.Parameters.AddWithValue("@ad2", details.AddressLine2);
             cmd.Parameters.AddWithValue("@cy", details.City);
-            cmd.Parameters.AddWithValue("@ctry", details.Country);
+            cmd.Parameters.AddWithValue("@cty", details.County);
             cmd.ExecuteNonQuery();
             CloseCon();
         }

@@ -43,7 +43,7 @@ namespace DBSBank
             addNewCurrentAccount.AddressLine1 = txtAddress1.Text;
             addNewCurrentAccount.AddressLine2 = txtAddress2.Text;
             addNewCurrentAccount.City = txtCity.Text;
-            addNewCurrentAccount.Country = cbxCounty.Items[cbxCounty.SelectedIndex].ToString();
+            addNewCurrentAccount.County = cbxCounty.Items[cbxCounty.SelectedIndex].ToString();
             addNewCurrentAccount.AccountType = cbxAccountType.Items[cbxAccountType.SelectedIndex].ToString();
             //AccountNumber accNo = new AccountNumber(txtAccountNumber.Text);
             addNewCurrentAccount.AccountNumber = new AccountNumber(txtAccountNumber.Text);
@@ -75,7 +75,7 @@ namespace DBSBank
             addNewSavingAccount.AddressLine1 = txtAddress1.Text;
             addNewSavingAccount.AddressLine2 = txtAddress2.Text;
             addNewSavingAccount.City = txtCity.Text;
-            addNewSavingAccount.Country = cbxCounty.Items[cbxCounty.SelectedIndex].ToString();
+            addNewSavingAccount.County = cbxCounty.Items[cbxCounty.SelectedIndex].ToString();
             addNewSavingAccount.AccountType = cbxAccountType.Items[cbxAccountType.SelectedIndex].ToString();
             addNewSavingAccount.AccountNumber = new AccountNumber(txtAccountNumber.Text);
             addNewSavingAccount.SortCode = txtSortCode.Text;

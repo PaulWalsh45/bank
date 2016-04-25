@@ -36,8 +36,8 @@ namespace DAL
 
         }
 
-        public AddAccountDetails(string firstname, string surname, string accountType, AccountNumber accountNumber, string sortCode, decimal openingBalance, decimal overdraft, AccountId id, Email email, Phone phone, string addressLine1, string addressLine2, string city, string country)
-            :base (id, email,  phone,  addressLine1,  addressLine2,  city,  country)
+        public AddAccountDetails(string firstname, string surname, string accountType, AccountNumber accountNumber, string sortCode, decimal openingBalance, decimal overdraft, AccountId id, Email email, Phone phone, string addressLine1, string addressLine2, string city, string county)
+            :base (id, email,  phone,  addressLine1,  addressLine2,  city,  county)
         {
             FirstName = firstname;
             Surname = surname;
@@ -84,7 +84,7 @@ namespace DAL
         //    string city, string cnty, string accType, int accNum, int scode, decimal bal, decimal od)
         public void AddCurrentAccount(AddAccountDetails details)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Accounts(FirstName,Surname,Email,Phone,Address1,Address2,City,Country,AccountType,AccountNumber,SortCode,InitialBalance,Overdraft) VALUES (@fn,@sn,@em,@ph,@ad1,@ad2,@cty,@ctry,@at,@an,@sc,@ib,@od)",OpenCon());
+            SqlCommand cmd = new SqlCommand("INSERT INTO Accounts(FirstName,Surname,Email,Phone,Address1,Address2,City,County,AccountType,AccountNumber,SortCode,InitialBalance,Overdraft) VALUES (@fn,@sn,@em,@ph,@ad1,@ad2,@cty,@ctry,@at,@an,@sc,@ib,@od)",OpenCon());
             cmd.Parameters.AddWithValue("@fn",details.FirstName);
             cmd.Parameters.AddWithValue("@sn", details.Surname);
             cmd.Parameters.AddWithValue("@em", details.Email.EmailAddress);
@@ -92,7 +92,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@ad1", details.AddressLine1);
             cmd.Parameters.AddWithValue("@ad2", details.AddressLine2);
             cmd.Parameters.AddWithValue("@cty", details.City);
-            cmd.Parameters.AddWithValue("@ctry", details.Country);
+            cmd.Parameters.AddWithValue("@ctry", details.County);
             cmd.Parameters.AddWithValue("@at", details.AccountType); 
             cmd.Parameters.AddWithValue("@an", details.AccountNumber.AccountNum);
             cmd.Parameters.AddWithValue("@sc", details.SortCode);
@@ -107,7 +107,7 @@ namespace DAL
         //    string city, string cnty, string accType, int accNum, int scode, decimal bal,decimal od)
         public void AddSavingsAccount(AddAccountDetails details)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Accounts(FirstName,Surname,Email,Phone,Address1,Address2,City,Country,AccountType,AccountNumber,SortCode,InitialBalance,Overdraft) VALUES (@fn,@sn,@em,@ph,@ad1,@ad2,@cty,@ctry,@at,@an,@sc,@ib,@od)", OpenCon());
+            SqlCommand cmd = new SqlCommand("INSERT INTO Accounts(FirstName,Surname,Email,Phone,Address1,Address2,City,County,AccountType,AccountNumber,SortCode,InitialBalance,Overdraft) VALUES (@fn,@sn,@em,@ph,@ad1,@ad2,@cty,@ctry,@at,@an,@sc,@ib,@od)", OpenCon());
             cmd.Parameters.AddWithValue("@fn", details.FirstName);
             cmd.Parameters.AddWithValue("@sn", details.Surname);
             cmd.Parameters.AddWithValue("@em", details.Email.EmailAddress);
@@ -115,7 +115,7 @@ namespace DAL
             cmd.Parameters.AddWithValue("@ad1", details.AddressLine1);
             cmd.Parameters.AddWithValue("@ad2", details.AddressLine2);
             cmd.Parameters.AddWithValue("@cty", details.City);
-            cmd.Parameters.AddWithValue("@ctry", details.Country);
+            cmd.Parameters.AddWithValue("@ctry", details.County);
             cmd.Parameters.AddWithValue("@at", details.AccountType);
             cmd.Parameters.AddWithValue("@an", details.AccountNumber.AccountNum);
             cmd.Parameters.AddWithValue("@sc", details.SortCode);

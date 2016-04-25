@@ -312,7 +312,7 @@
             // County
             // 
             this.County.DataPropertyName = "County";
-            this.County.HeaderText = "Country";
+            this.County.HeaderText = "County";
             this.County.Name = "County";
             // 
             // accountTypeDataGridViewTextBoxColumn
@@ -414,5 +414,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sortCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn initialBalanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn overdraftDataGridViewTextBoxColumn;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn County;
     }
 }
